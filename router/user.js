@@ -1,10 +1,13 @@
 const userRouter = require('express').Router();
 const path = require('path');
+const controller = require('../controller/userController.js')
+
 
 userRouter.get('/', async(req,res) => {
-		const pastpath = path.resolve( path.join(__dirname) + '/../public/cadastro.html');
-		console.log("Requisicao para página cadastro de usuário\nIP:"+ req.ip + " HOST:"+req.hostname+"\n");
-		res.sendFile(pastpath)
+    const pastpath = path.resolve( path.join(__dirname) + '/../public/cadastro.html');
+    res.sendFile(pastpath)
 })
+
+userRouter.post('/newUserValidation', controller.newUser);
 
 module.exports = userRouter;

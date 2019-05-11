@@ -1,13 +1,13 @@
 //let Submit = ;
 
 document.querySelector("#botaozinho")
-                                    .addEventListener("click", event => {
+                                    .addEventListener("click", async event => {
                                       event.preventDefault();
                                       const inputs = document.querySelectorAll("input");
                                       console.log("worked.")
                                       if (inputs[0].value && inputs[1].value && inputs[2].value ){
 
-                                        let jUser = JSON.
+                                        let data = JSON.
                                             stringify(
                                             {
                                             "userName":inputs[0].value,
@@ -16,11 +16,18 @@ document.querySelector("#botaozinho")
                                             }	
                                           )
 
-                                        fetch('http://127.0.0.1:8081/User', {
+                                        await fetch('http://127.0.0.1:3000/user/newUserValidation', {
                                           method:'POST',
-                                          body: jUser
+                                          headers: { "Content-Type": "application/json" },
+                                          body: data
                                         })
-                                          .then(console.log("Ok!"))
+                                          .then( function(response) {
+                                            console.log(response.json())
+                                          } )
+                                          .catch((err)=>{
+                                            console.log(err)
+                                          })
+                                        
                                       }
 
 	})
