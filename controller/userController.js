@@ -1,19 +1,20 @@
 const fetch = require('node-fetch');
 
-const newUser = async (req,res) => {
-  //console.log(req.body)
-  await fetch('http://127.0.0.1:8080/User', {
-    method:'POST',
-    body: req.body
-  } )
-  .then(function(result){
-    console.log(result);
-    res.send(result);
+const restify = require('restify-clients');
+const apiJavaDatabase = restify.createJsonClient({
+  url:'http://127.0.0.1:8080'
+})
 
-  })
-  .catch(function(err){
-    res.send(err)
-  })
+const newUser = (req,res) => {
+  //console.log(req.body.data+"\nheader"+req.headers);
+  //req.headers = { "Content-Type": "application/json" };
+  //await fetch('http://127.0.0.1:8080/User', {
+  apiJavaDatabase.post('/User', req.body, (err,req,res,ret) => {
+    console.log("Erro:"+err);
+    console.log("req:"+req);
+    console.log("res:"+res);
+    console.log("retorno:"+ret);
+});
 };
 
 module.exports = {
