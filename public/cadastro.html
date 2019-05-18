@@ -4,43 +4,18 @@
 	<title>Cadastro de novos usuários</title>
 
 </head>
-<body>
-<h1>Página de Cadastro</h1>
-<input type="text" name="username" placeholder="Insira o nome de usuário">
-<input type="text" name="email" placeholder="Insira o email do usuário">
-<input type="password" name="password" placeholder="Insira a senha de usuário">
-<button id="botaozinho">Submit</button>
+	<body>
+	<h1>Página de Cadastro</h1>
+		<input type="text" name="username" placeholder="Insira o nome de usuário">
+		<input type="text" name="email" placeholder="Insira o email do usuário">
+		<input type="password" name="password" placeholder="Insira a senha de usuário">
+	<button id="botaozinho">Submit</button>
 
-<script src="js/front.js"></script>
+	<h1>Página de Teste Login</h1>
+		<input type="text" name="username" placeholder="Insira o login">
+		<input type="text" name="password" placeholder="Insira a senha">
+	<button id="botaozinhoLogin">Submit</button>
 
-<!--
-<script>
-let Submit = document.querySelector("#botaozinho");
-
-Submit.addEventListener("click", event => {
-		event.preventDefault();
-		const inputs = document.querySelectorAll("input");
-
-		if (inputs[0] && inputs[1] && inputs[2]){
-
-			let jUser = JSON.
-					stringify(
-					 {
-					"userName":inputs[0].value,
-					"password":inputs[1].value,
-					"eMail":inputs[2].value	
-					}	
-				)
-
-			fetch('http://127.0.0.1:8081/User', {
-				method:'POST',
-				body: jUser
-			})
-				.then(console.log("Ok!"))
-		}
-
-	})
-</script>
--->
-</body>
+	<script src="js/front.js"></script>
+	</body>
 </html>

@@ -6,17 +6,27 @@ const apiJavaDatabase = restify.createJsonClient({
 })
 
 const newUser = (req,res) => {
-  //console.log(req.body.data+"\nheader"+req.headers);
-  //req.headers = { "Content-Type": "application/json" };
-  //await fetch('http://127.0.0.1:8080/User', {
-  apiJavaDatabase.post('/User', req.body, (err,req,res,ret) => {
-    console.log("Erro:"+err);
-    console.log("req:"+req);
-    console.log("res:"+res);
-    console.log("retorno:"+ret);
-});
+  apiJavaDatabase.post('/User', req.body, (err,req,res2,ret) => {
+    if (err) console.log("Um erro ocorreu:\n"+err);
+    if (ret){
+      console.log("Retorno do Web Service Java:\n"+JSON.stringify(ret));
+      res.send().status(200);
+    } 
+  });
+};
+
+const logIn = (req,res)=>{
+ // console.log("Params:" +JSON.stringify(req.body));
+  apiJavaDatabase.post('/findUser', req.body, (err, req, res2, ret) => {
+    if (err) console.log("Um erro ocorreu:\n"+err);
+    if (ret){
+      console.log("Retorno do Web Service Java:\n"+JSON.stringify(ret)) 
+      res.send().status(200);
+    } 
+  });
 };
 
 module.exports = {
-  newUser
+  newUser,
+  logIn
 }

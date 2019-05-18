@@ -8,6 +8,11 @@ userRouter.get('/', async(req,res) => {
     res.sendFile(pastpath)
 })
 
-userRouter.post('/newUserValidation', controller.newUser);
+// função de registro de usuário
+userRouter.post('/newUserValidation', controller.newUser); 
+
+// função de log in do usuário
+userRouter.post('/ActionLogin', controller.logIn);
+
 
 module.exports = userRouter;
