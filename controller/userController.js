@@ -15,12 +15,14 @@ const newUser = (req,res) => {
   });
 };
 
-const logIn = (req,res)=>{
- // console.log("Params:" +JSON.stringify(req.body));
-  apiJavaDatabase.post('/findUser', req.body, (err, req, res2, ret) => {
+const logIn = (req,res) => {
+  console.log(JSON.stringify(req.body));
+  req2.body = req.body
+  res.send().status(200);
+  apiJavaDatabase.get('/findUser', (err,req2,res2,ret) => {
     if (err) console.log("Um erro ocorreu:\n"+err);
     if (ret){
-      console.log("Retorno do Web Service Java:\n"+JSON.stringify(ret)) 
+      console.log("Retorno do Web Service Java:\n"+JSON.stringify(ret));
       res.send().status(200);
     } 
   });
