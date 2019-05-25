@@ -55,7 +55,11 @@ document.querySelector("#botaozinhoLogin").addEventListener("click", async event
                                           body: data
                                         })
                                           .then( function(response) {
-                                            console.log(response.json())
+                                            response.json()
+                                              .then(token => {
+                                                console.log(token['x-access-token']);
+                                                localStorage.setItem("accessToken", token['x-access-token']);
+                                              });
                                           } )
                                           .catch((err)=>{
                                             console.log(err)
