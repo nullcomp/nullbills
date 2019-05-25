@@ -5,6 +5,7 @@ const apiJavaDatabase = restify.createJsonClient({
 })
 
 const newUser = (req,res) => {
+  console.log("bateu aqui essa porra.");
   apiJavaDatabase.post('/User', req.body, (err,req,res2,ret) => {
     if (err) console.log("Um erro ocorreu:\n"+err);
     if (ret){

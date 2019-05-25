@@ -1,5 +1,3 @@
-//let Submit = ;
-
 document.querySelector("#botaozinho")
                                     .addEventListener("click", async event => {
                                       event.preventDefault();
@@ -45,8 +43,8 @@ document.querySelector("#botaozinhoLogin").addEventListener("click", async event
                                         let data = JSON.
                                             stringify(
                                             {
-                                            "userName":inputs[3].value,
-                                            "password":inputs[4].value, 
+                                            "userName":inputs[4].value,
+                                            "password":inputs[5].value, 
                                             } 
                                           )
 
