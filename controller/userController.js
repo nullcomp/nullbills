@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 const restify = require('restify-clients');
+const tolkenService = require('../tokenService/tokenAccess.js');
 const apiJavaDatabase = restify.createJsonClient({
   url:'http://127.0.0.1:8080'
 })
 
 const newUser = (req,res) => {
-  console.log("bateu aqui essa porra.");
+  console.log(req.body);
   apiJavaDatabase.post('/User', req.body, (err,req,res2,ret) => {
     if (err) console.log("Um erro ocorreu:\n"+err);
     if (ret){
@@ -28,11 +29,7 @@ const logIn = (req,res) => {
       console.log("Retorno do Web Service Java:\n"+JSON.stringify(ret));
       if (ret == 404) res.sendStatus(404);
       else{
-        let tokenAccess = jwt.sign(
-            {user : ret},
-            'secretKey',
-            { expiresIn:84600 }
-          );
+        let tokenAccess = tolkenService.generateTolken(ret);
           res.json({'x-access-token': tokenAccess});
       }
     } 
