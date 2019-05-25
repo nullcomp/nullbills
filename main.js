@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const userRouter = require('./router/user.js');
+const movimentRounter = require('./router/moviment.js')
 const app = express();
 const port = 3000;
 
@@ -17,7 +18,7 @@ app.use( logger('dev'));
 
 // links que comecem com /user serão roteados userRouter
 app.use('/user', userRouter);
-
+//.use('/moviment', movimentRounter);
 app.listen(port, ()=>{
 	console.log("Server running on..."+port+"\n");
 	}

@@ -11,8 +11,9 @@ document.querySelector("#botaozinho")
                                             stringify(
                                             {
                                             "userName":inputs[0].value,
-                                            "password":inputs[1].value,
-                                            "eMail":inputs[2].value	
+                                            "password":inputs[2].value,
+                                            "eMail":inputs[1].value,
+                                            "montante":inputs[3].value
                                             }	
                                           )
 
