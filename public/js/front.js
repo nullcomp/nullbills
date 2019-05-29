@@ -2,8 +2,10 @@ document.querySelector("#botaozinho")
                                     .addEventListener("click", async event => {
                                       event.preventDefault();
                                       const inputs = document.querySelectorAll("input");
-                                      console.log("worked.")
+                                      console.log("worked.");
                                       if (inputs[0].value && inputs[1].value && inputs[2].value ){
+
+                                        if (!inputs[3].value) inputs[3].value = 0;
 
                                         let data = JSON.
                                             stringify(
@@ -21,7 +23,7 @@ document.querySelector("#botaozinho")
                                           body: data
                                         })
                                           .then( function(response) {
-                                            console.log(response.json())
+                                            alert("Conta criada com sucesso!\n");
                                           } )
                                           .catch((err)=>{
                                             console.log(err)
@@ -58,6 +60,8 @@ document.querySelector("#botaozinhoLogin").addEventListener("click", async event
                                               .then(token => {
                                                 console.log(token['x-access-token']);
                                                 localStorage.setItem("accessToken", token['x-access-token']);
+                                                console.log("Redirect....")
+                                                window.location.href("http://127.0.0.1:3000/user/userhome");
                                               });
                                           } )
                                           .catch((err)=>{

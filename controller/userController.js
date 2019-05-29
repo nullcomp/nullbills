@@ -36,6 +36,11 @@ const logIn = (req,res) => {
   });
 };
 
+const userHome = (req,res) => {
+  console.log("User home acessada");
+  return true;
+};
+
 module.exports = {
   newUser,
   logIn

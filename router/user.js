@@ -8,6 +8,13 @@ userRouter.get('/', async(req,res) => {
     res.sendFile(pastpath)
 })
 
+// parte interna do sistema
+userRouter.get('/userhome', async(req,res) => {
+  
+  const pastpath = path.resolve( path.join(__dirname) + '/../public/system.html');
+  res.sendFile(pastpath);
+});
+
 // função de registro de usuário
 userRouter.post('/newUserValidation', controller.newUser); 
 
